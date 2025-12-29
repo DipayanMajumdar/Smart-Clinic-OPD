@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container" style="max-width: 1200px;">
+        <div class="dashboard-grid">
+            <div class="queue-sidebar">
+                <h3>Patient Queue</h3>
+                <div id="doctor-queue-list"></div>
+            </div>
+            <div id="consultation-area">
+                <div class="no-print" style="border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <h1 style="margin: 0; color: var(--primary);">SMART CLINIC OPD</h1>
+                            <div style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
+                                <h3 id="doctor-name-text" style="margin: 0; color: #555;">Dr. Smith (MBBS, MD)</h3>
+                                <button onclick="editDoctorName()" style="background:none; border:none; cursor:pointer; font-size: 1rem; padding: 0;" title="Edit Name">✏️</button>
+                            </div>
+                        </div>
+                        <a href="admin.html" class="back-btn no-print"><i class="fa-solid fa-arrow-left" style="margin-top: 3px;"></i> Dashboard</a>
+                    </div>
+                </div>
+                <div id="empty-state" style="text-align: center; margin-top: 80px; color: #888;">
+                    <div style="font-size: 4rem; margin-bottom: 10px; opacity: 0.3;">🩺</div>
+                    <h2>Ready to Consult</h2>
+                    <p>Select a patient from the queue to start.</p>
+                </div>
+                <div id="prescription-pad" class="hidden">
+                    <div class="print-header" style="border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 20px; display: none;">
+                        <h1 style="margin: 0; color: #000;">SMART CLINIC OPD</h1>
+                        <p style="margin: 5px 0 0; font-weight:600 ;"><span id="print-doc-name">Dr. Smith</span></p>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                        <div>
+                            <p style="margin: 5px 0;"><strong>Patient:</strong> <span id="pres-name">--</span></p>
+                            <p style="margin: 5px 0;"><strong>Age:</strong> <span id="pres-age">--</span></p>
+                            <p style="margin: 5px 0;"><strong>Sex:</strong> <span id="pres-gender">--</span></p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="margin: 5px 0;"><strong>Token:</strong> #<span id="pres-token">--</span></p>
+                            <p style="margin: 5px 0;"><strong>Date:</strong> <span id="pres-date">--</span></p>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 20px; table-layout: fixed;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid #000; text-align: left;">
+                                    <th style="padding: 10px; width: 60%;">Medicine Name</th>
+                                    <th style="padding: 5px; width: 25%;">Frequency</th>
+                                    <th style="padding: 10px; width: 15%;">Days</th>
+                                </tr>
+                            </thead>
+                            <tbody id="med-list-body"></tbody>
+                        </table>
+                    </div>
+                    <div class="no-print med-form-container">
+                        <h4 style="margin-bottom: 15px;">➕ Add Medicine</h4>
+                        <div class="med-row-large">
+                            <input type="text" id="med-name" class="input-big" placeholder="Medicine Name" style="flex: 3;">
+                            <input type="text" id="med-dose" class="input-big" placeholder="Freq (e.g. 1-0-1)" style="flex: 1.3;">
+                            <input type="number" id="med-days" class="input-big" placeholder="Days" style="flex: 0.7;">
+                            <button onclick="addMedicine()" class="btn-add-big" style="background: var(--primary); color: white; border: none; padding: 0 20px; border-radius: 8px; font-weight: bold; cursor: pointer;">ADD</button>
+                        </div>
+                        <div class="action-buttons">
+                            <button onclick="printPrescription()" class="btn-print" style="background: #0277bd;">🖨️ Print</button>
+                            <button onclick="markAbsent()" class="btn-skip" style="background: #6c757d; color: white;">🚫 Absent</button>
+                            <button onclick="takeBreak()" class="btn-break" style="background: #f0ad4e; color: white;">☕ Break</button>
+                            <button onclick="callNextPatient()" class="btn-next" style="background: #28a745;">✅ Finish / Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/doctor.js"></script>
+    <script src="js/auth-guard.js"></script>
+    <script src="js/transitions.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Clinic Queue</title>
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/transitions.css">
+</head>
+
+<body class="patient-view-body">
+    <div class="header-bar">
+        <h2 style="margin:0; display: flex; align-items: center;"><img src="/images/logo.png" alt="logo" style="width: clamp(2.5rem, 6vw, 3rem)"></i>SMART CLINIC OPD</h2>
+        <div class="clock-container">
+            <span id="live-date">--/--/----</span>
+            <span id="live-time" style="font-weight:bold; margin-left: 10px;">--:--</span>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 20px; margin-bottom: 70px; padding: clamp(12px, 2vw, 20px);">
+        <h2 style="text-align: center;">🏥 Live Queue Status</h2>
+        <div class="serving-box">
+            <p class="label">NOW SERVING</p>
+            <h1 id="current-token">--</h1>
+            <h3 id="current-name">Waiting...</h3>
+        </div>
+        <hr style="margin: 15px 0; border-top: 2px dashed #ddd;">
+        <h3>➡️ Up Next</h3>
+        <div id="queue-list">
+        </div>
+    </div>
+    <div id="missed-container" class="hidden">
+        <div class="missed-bar">
+            <span class="missed-label">⚠️ MISSED PATIENTS:</span>
+            <div id="missed-list" class="missed-tokens">
+            </div>
+        </div>
+    </div>
+    <script src="js/live.js"></script>
+    <script src="js/transitions.js"></script>
+</body>
+
+</html>

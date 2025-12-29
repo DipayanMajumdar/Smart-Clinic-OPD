@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard | Smart Clinic OPD</title>
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="admin-page">
+    <div class="dashboard-container">
+        <div class="dash-header">
+            <div class="brand-section">
+                <img src="/images/logo.png" alt="Logo" class="brand-logo">
+                <div class="brand-text">
+                    <h1>SMART CLINIC OPD</h1>
+                    <span>Management System</span>
+                </div>
+            </div>
+            <div class="user-controls">
+                <div class="admin-badge"><i class="fa-solid fa-user-shield"></i> Admin Panel</div>
+                <a href="#" onclick="logout()" class="btn-logout"><i class="fa-solid fa-power-off"></i> Logout</a>
+            </div>
+        </div>
+        <div class="admin-grid">
+            <a href="reception.html" class="admin-card card-reception">
+                <div class="icon-box"><i class="fa-solid fa-user-pen"></i></div>
+                <span class="card-title">Reception Desk</span>
+                <p class="card-desc">Register walk-in patients, edit details, and manage the entry list.</p>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
+            </a>
+            <a href="live.html" class="admin-card card-tv" target="_blank">
+                <div class="icon-box"><i class="fa-solid fa-tv"></i></div>
+                <span class="card-title">Waiting Room TV</span>
+                <p class="card-desc">Launch the full-screen display for patients in the waiting area.</p>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
+            </a>
+            <a href="doctor.html" class="admin-card card-doctor">
+                <div class="icon-box"><i class="fa-solid fa-user-doctor"></i></div>
+                <span class="card-title">Doctor's Cabin</span>
+                <p class="card-desc">View patient history, conduct consultations, and print Rx.</p>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
+            </a>
+        </div>
+    </div>
+    <script src="js/auth-guard.js"></script>
+    <script src="js/transitions.js"></script>
+</body>
+
+</html>

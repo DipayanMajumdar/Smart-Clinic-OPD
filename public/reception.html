@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reception - Registration</title>
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="container" style="max-width: 800px;">
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 30px;">
+
+            <a href="admin.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left" style="margin-top: 3px;"></i> Dashboard
+            </a>
+
+            <div style="position: absolute; left: 50%; transform: translateX(-50%); text-align: center;">
+                <h1
+                    style="margin: 0; display: flex; align-items: center; color: var(--primary); font-size: clamp(1.5rem, 4vw, 2rem); text-transform: uppercase; letter-spacing: 1px;">
+                    <img src="/images/logo.png" alt="logo" style="width: clamp(2.5rem, 6vw, 3rem); margin-right: 10px;">
+                    Smart Clinic OPD
+                </h1>
+                <p style="margin: 0; font-size: clamp(0.9rem, 2vw, 1.1rem); color: #666; font-weight: 500;">Reception &
+                    Registration Desk</p>
+            </div>
+
+            <div style="width: 120px;"></div>
+        </div>
+        <div class="header-bar" style="margin-bottom: 20px; justify-content: center; background: #e0f2f1;">
+            <h3 style="margin:0; color: #00695c;">📝 Patient Form</h3>
+        </div>
+        <div class="form-card">
+            <div class="form-group">
+                <label>Patient Name</label>
+                <input type="text" id="p-name" class="form-style" placeholder="Enter full name" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label>Age</label>
+                    <input type="number" id="p-age" class="form-style" placeholder="Yrs" required min="0">
+                </div>
+                <div class="form-group half-width">
+                    <label>Gender</label>
+                    <select id="p-gender" class="form-style" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Mobile Number</label>
+                <input type="tel" id="p-phone" class="form-style" placeholder="Mobile Number" required>
+            </div>
+            <button onclick="addPatient()" class="btn-submit">Generate Token</button>
+        </div>
+        <hr style="margin: 25px 0; border: 0; border-top: 1px dashed #ccc;">
+        <h3>📋 Today's List</h3>
+        <div id="reception-log"></div>
+    </div>
+    <script src="js/reception.js"></script>
+    <script src="js/auth-guard.js"></script>
+    <script src="js/transitions.js"></script>
+</body>
+
+</html>

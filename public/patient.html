@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Portal | Smart Clinic OPD</title>
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/transitions.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="patient-page">
+  <header class="app-header">
+    <div class="app-brand">
+      <img src="/images/logo.png" alt="logo"> SMART CLINIC OPD
+    </div>
+    <a href="/" class="btn-home"><i class="fa-solid fa-house"></i> Home</a>
+  </header>
+  <div class="app-container">
+    <div class="tabs">
+      <div id="tab-slider" class="tab-slider"></div>
+      <button class="tab-btn active" onclick="switchTab(event, 'booking')">
+        <i class="fa-solid fa-calendar-check"></i> Book Token
+      </button>
+      <button class="tab-btn" onclick="switchTab(event, 'queue')">
+        <i class="fa-solid fa-list-ol"></i> Live Queue
+      </button>
+    </div>
+    <div id="booking-view" class="view-section active">
+      <div id="success-msg" class="hidden">
+        <div class="success-box">
+          <div style="font-size: clamp(2.5rem, 6vw, 3.5rem); margin-bottom:10px;">🎉</div>
+          <h2 style="color:var(--primary); margin-bottom:5px; font-size: clamp(1.4rem, 4vw, 2rem);">Booking
+            Confirmed!</h2>
+          <p style="color:#666; font-size: clamp(0.9rem, 2.5vw, 1rem);">Please capture your token number.</p>
+          <div id="user-token-display" class="token-display">--</div>
+          <div
+            style="background:#f8f9fa; padding:15px; border-radius:10px; margin-bottom:20px; font-size: clamp(0.8rem, 2.5vw, 0.95rem); color:#555;">
+            <i class="fa-solid fa-info-circle"></i> Tip: Switch to the <b>Live Queue</b> tab to track your
+            status.
+          </div>
+          <button onclick="resetForm()" class="btn-submit"
+            style="background: white; color: #444; border: 2px solid #ddd; box-shadow: none;">
+            Book Another Token
+          </button>
+        </div>
+      </div>
+      <div id="booking-form" class="glass-card">
+        <h2>New Registration</h2>
+        <p>Enter patient details to get a token.</p>
+        <div class="form-group">
+          <label class="form-label">Patient Full Name</label>
+          <input type="text" id="p-name" class="form-input" placeholder="e.g. Rahul Kumar">
+        </div>
+        <div style="display:flex; gap: clamp(10px, 3vw, 20px);">
+          <div class="form-group" style="flex:1;">
+            <label class="form-label">Age</label>
+            <input type="number" id="p-age" class="form-input" placeholder="Yrs">
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label class="form-label">Gender</label>
+            <select id="p-gender" class="form-input">
+              <option value="" selected disabled>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mobile Number</label>
+          <input type="tel" id="p-phone" class="form-input" placeholder="10-digit number">
+        </div>
+        <button onclick="bookToken()" class="btn-submit">
+          Generate Token <i class="fa-solid fa-ticket" style="margin-top: 3px;"></i>
+        </button>
+      </div>
+    </div>
+    <div id="queue-view" class="view-section">
+      <div class="live-status-card">
+        <div style="font-size: clamp(0.8rem, 2.5vw, 0.95rem); font-weight:600; opacity:0.8; margin-bottom:5px;">
+          CURRENTLY SERVING</div>
+        <div id="serving-token">--</div>
+        <div id="serving-name">Please Wait...</div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; padding:0 5px;">
+        <h3 style="color:#444; font-size: clamp(1.1rem, 3vw, 1.4rem);">Upcoming Queue</h3>
+        <button onclick="fetchLiveQueue()" id="refresh">
+          <i class="fa-solid fa-rotate"></i> Refresh
+        </button>
+      </div>
+      <div id="queue-list-container" class="queue-list-container">
+        <p style="text-align:center; color:#999; padding:20px;">Loading queue...</p>
+      </div>
+    </div>
+  </div>
+  <script src="js/patient.js"></script>
+  <script src="js/transitions.js"></script>
+</body>
+
+</html>

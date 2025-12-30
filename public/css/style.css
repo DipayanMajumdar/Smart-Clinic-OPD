@@ -397,7 +397,7 @@ select {
 }
 
 .input-big {
-    padding: 15px;
+    padding: 10px;
     font-size: clamp(16px, 1.2vw, 18px);
     border: 2px solid #b0bec5;
     border-radius: 8px;

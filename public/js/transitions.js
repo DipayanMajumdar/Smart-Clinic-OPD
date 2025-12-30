@@ -17,3 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted || document.body.classList.contains('page-exit')) {
+        document.body.classList.remove('page-exit');
+    }
+});
